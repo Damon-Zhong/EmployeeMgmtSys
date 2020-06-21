@@ -1,0 +1,24 @@
+{
+  "name": "employeemgmtsys",
+  "version": "1.0.0",
+  "description": "",
+  "main": "mgmtSys.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Damon-Zhong/EmployeeMgmtSys.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Damon-Zhong/EmployeeMgmtSys/issues"
+  },
+  "homepage": "https://github.com/Damon-Zhong/EmployeeMgmtSys#readme",
+  "dependencies": {
+    "dotenv": "^8.2.0",
+    "inquirer": "^7.2.0",
+    "mysql": "^2.18.1"
+  }
+}
