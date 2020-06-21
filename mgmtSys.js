@@ -172,6 +172,7 @@ async function mainApp(){
                 choices: [
                     { name: "Update Employee Role", value: "update" }, 
                     { name: "Add Employee", value: "add" },
+                    { name: "Remove Employee", value: "remove" },
                     { name: "Return to the main menu", value: "return" } 
                 ] 
             }
@@ -202,7 +203,6 @@ async function mainApp(){
             mainApp()
         }
 
-
         if( response.action=="add" ){
             // load roles & departments from the database
             const dbRole = await db.query( "SELECT * FROM role")
@@ -229,6 +229,24 @@ async function mainApp(){
             mainApp()
 
         }
+
+        if( response.action=="remove"){
+            let employeeNames = []
+            employeeList.forEach( (item) =>{
+                employeeNames.push( { name:item.employeeName, value:item.id } )
+            })
+
+            response = await inquirer.prompt([
+                { message: "Which employee do you want to remove?", type:"list", name:"deleteEmployee",
+                    choices: employeeNames }
+            ])
+
+            let deleteRole = await db.query( `DELETE FROM employee WHERE id='${response.deleteEmployee}'` )
+           
+            console.log( `Employee has been removed.`)
+            mainApp()
+        }
+
         if( response.action=="return" ){
             console.log( `Returning to the main menu...`)
             mainApp()
