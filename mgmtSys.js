@@ -210,7 +210,6 @@ async function mainApp(){
             dbRole.forEach( function( item ){
                 role.push( { name: item.title, value: item.id } )
             })
-            console.log( `role: `, role )
                         
             response = await inquirer.prompt([
                 {   message: "What is their first name?", type: "input", name: "first_name" },
@@ -221,7 +220,6 @@ async function mainApp(){
                     choices: [ "no one"] }                    
             ]) 
 
-            console.log(  `user info: `, response )
             //INSERT INTO employee VALUES( 0, "Employee2", "Lastname2", 1, 1 );
             let saveResult = await db.query( "INSERT INTO employee VALUES( ?,?,?,?,? ) ", 
                                             [ 0, response.first_name, response.last_name, response.role, 1 ] )
